@@ -1,13 +1,27 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Button } from '@/components/Button';
 import { ProjectCard } from '@/components/ProjectCard';
-import { AwardItem } from '@/components/AwardItem';
-import heroImage from '@/assets/marcos-hero.jpg';
+import { AwardItem } from '../components/AwardItem';
+import { Gallery } from '../components/Gallery';
+import heroImageSrc from '../assets/1718220391901.jpeg';
+import awardImage1 from '../assets/1718220391901.jpeg';
+
+const heroImage = {
+  url: heroImageSrc,
+  fallback: '/placeholder.svg'
+};
+
+const awardImage = {
+  url: 'https://mobcontent.com.br/wp-content/uploads/2021/04/premio-tela-viva-768x512.jpg',
+  fallback: '/placeholder.svg'
+};
 
 const Index = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const [heroImageError, setHeroImageError] = useState(false);
+  const [awardImageError, setAwardImageError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,19 +48,9 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-        <div 
-          ref={parallaxRef}
-          className="absolute inset-0 parallax-slow"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.15
-          }}
-        />
-        
         <div className="relative z-10 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          {/* Text Content */}
+          <div className="space-y-8 order-2 lg:order-1">
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-display font-bold leading-tight">
                 <span className="text-gradient-primary">Marcos Ferreira:</span>
@@ -58,7 +62,7 @@ const Index = () => {
               <div className="dynamic-line w-24 bg-gradient-accent"></div>
             </div>
             
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-xl text-muted-foreground leading-relaxed">
               Sócio-diretor da mobCONTENT. Pioneiro no uso de tecnologia para enriquecer a cultura 
               e empoderar comunidades marginalizadas através de narrativas decoloniais.
             </p>
@@ -67,9 +71,9 @@ const Index = () => {
               <Button 
                 variant="primary" 
                 size="lg"
-                onClick={() => scrollToSection('vision')}
+                onClick={() => scrollToSection('portfolio')}
               >
-                Conheça a Missão
+                Ver Portfólio
               </Button>
               <Button 
                 variant="ghost" 
@@ -80,17 +84,17 @@ const Index = () => {
               </Button>
             </div>
           </div>
-          
-          <div className="relative">
-            <div className="w-full h-96 bg-gradient-card rounded-2xl glow-primary overflow-hidden">
+
+          {/* Image */}
+          <div className="order-1 lg:order-2 relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
               <img 
-                src={heroImage}
+                src={heroImage.url}
                 alt="Marcos Ferreira"
-                className="w-full h-full object-cover"
+                className="w-full h-auto max-w-md mx-auto"
+                onError={() => setHeroImageError(true)}
               />
             </div>
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-accent rounded-full glow-accent animate-float"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary rounded-full glow-secondary animate-float" style={{animationDelay: '-2s'}}></div>
           </div>
         </div>
       </section>
@@ -186,10 +190,13 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <AwardItem
-              title="Young Creative Entrepreneur Award"
-              description="British Council - Reconhecimento internacional como jovem empreendedor criativo"
+              title="Young Creative Entrepreneur"
+              description="Brasileiro selecionado pelo British Council entre líderes globais."
               year="2013"
-              delay={0}
+              delay={0.1}
+              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2022/12/1400226_10151692115789499_1362031008_o.jpeg"
+              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2022/12/1400226_10151692115789499_1362031008_o.jpeg"
+              onImageError={() => setAwardImageError(true)}
             />
             
             <AwardItem
@@ -197,6 +204,9 @@ const Index = () => {
               description="Londres - A mobCONTENT foi reconhecida como empresa brasileira de destaque por sua inovação"
               year="2015"
               delay={200}
+              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/07/Screenshot-2025-07-30-at-17.17.24.png"
+              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/07/Screenshot-2025-07-30-at-17.17.24.png"
+              onImageError={() => setAwardImageError(true)}
             />
             
             <AwardItem
@@ -204,6 +214,9 @@ const Index = () => {
               description="França - Prêmio por projetos transmídia"
               year="2013"
               delay={400}
+              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/sunny-side-doc-awards.jpg"
+              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/sunny-side-doc-awards.jpg"
+              onImageError={() => setAwardImageError(true)}
             />
             
             <AwardItem
@@ -211,6 +224,29 @@ const Index = () => {
               description="A série 'Garagem Maker' foi nomeada como melhor interprograma da América Latina"
               year="2018"
               delay={600}
+              imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCT4hPVbkPjgFDjVSRSJ43LfXaX6qmJCacnw&s"
+              featuredImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCT4hPVbkPjgFDjVSRSJ43LfXaX6qmJCacnw&s"
+              onImageError={() => setAwardImageError(true)}
+            />
+            
+            <AwardItem
+              title="Golden Ticket - The Ai Art Magazine"
+              description="Obra 'Anastácia', de Marcos Ferreira, gerada com IA, selecionada com destaque pela revista alemã"
+              year="2025"
+              delay={800}
+              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/08/1736368093688.jpeg"
+              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/08/1736368093688.jpeg"
+              onImageError={() => setAwardImageError(true)}
+            />
+
+            <AwardItem
+              title="Rio Criativo"
+              description="Empresa incubada e selecionada como destaque"
+              year="2016"
+              delay={1000}
+              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/certificado-rio-criativo.jpg"
+              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/certificado-rio-criativo.jpg"
+              onImageError={() => setAwardImageError(true)}
             />
           </div>
         </div>
@@ -238,11 +274,12 @@ const Index = () => {
               </div>
               
               <div className="relative">
-                <div className="w-full h-96 bg-gradient-card rounded-2xl glow-secondary overflow-hidden transform rotate-2">
+                <div className="w-full h-96 bg-gradient-card rounded-2xl overflow-hidden shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
                   <img 
-                    src={heroImage}
-                    alt="Marcos Ferreira trabalhando"
+                    src="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/premio-tela-viva.jpg"
+                    alt="Marcos Ferreira - Da Comunicação ao Código"
                     className="w-full h-full object-cover"
+                    onError={() => setAwardImageError(true)}
                   />
                 </div>
               </div>
@@ -296,7 +333,7 @@ const Index = () => {
       <footer className="py-12 px-4 border-t border-border/20">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-muted-foreground">
-            © 2024 Marcos Ferreira. Impacto através da tecnologia.
+            2024 Marcos Ferreira. Impacto através da tecnologia.
           </p>
         </div>
       </footer>
