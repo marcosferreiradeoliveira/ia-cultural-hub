@@ -5,6 +5,8 @@ import { Button } from '@/components/Button';
 import { ProjectCard } from '@/components/ProjectCard';
 import { AwardItem } from '../components/AwardItem';
 import { Gallery } from '../components/Gallery';
+import { WhatsAppButton } from '../components/WhatsAppButton';
+import { ContactForm } from '../components/ContactForm';
 import heroImageSrc from '../assets/1718220391901.jpeg';
 import awardImage1 from '../assets/1718220391901.jpeg';
 
@@ -299,6 +301,10 @@ const Index = () => {
             <p className="text-xl text-muted-foreground mb-12">
               Conecte-se comigo para explorar como a tecnologia pode transformar narrativas e empoderar comunidades.
             </p>
+
+            <div className="mb-12">
+              <ContactForm />
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
@@ -337,6 +343,8 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      <WhatsAppButton />
     </div>
   );
 };
