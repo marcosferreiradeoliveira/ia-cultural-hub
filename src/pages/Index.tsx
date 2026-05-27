@@ -7,23 +7,17 @@ import { AwardItem } from '../components/AwardItem';
 import { Gallery } from '../components/Gallery';
 import { WhatsAppButton } from '../components/WhatsAppButton';
 import { ContactForm } from '../components/ContactForm';
+import { AWARD_IMAGES, PLACEHOLDER_IMAGE } from '@/lib/assets';
 import heroImageSrc from '../assets/1718220391901.jpeg';
-import awardImage1 from '../assets/1718220391901.jpeg';
 
 const heroImage = {
   url: heroImageSrc,
-  fallback: '/placeholder.svg'
-};
-
-const awardImage = {
-  url: 'https://mobcontent.com.br/wp-content/uploads/2021/04/premio-tela-viva-768x512.jpg',
-  fallback: '/placeholder.svg'
+  fallback: PLACEHOLDER_IMAGE,
 };
 
 const Index = () => {
   const parallaxRef = useRef<HTMLDivElement>(null);
-  const [heroImageError, setHeroImageError] = useState(false);
-  const [awardImageError, setAwardImageError] = useState(false);
+  const [aboutImageSrc, setAboutImageSrc] = useState(AWARD_IMAGES.premioTelaViva);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,7 +88,7 @@ const Index = () => {
                 src={heroImage.url}
                 alt="Marcos Ferreira"
                 className="w-full h-auto max-w-md mx-auto"
-                onError={() => setHeroImageError(true)}
+                onError={(e) => { e.currentTarget.src = heroImage.fallback; }}
               />
             </div>
           </div>
@@ -196,9 +190,8 @@ const Index = () => {
               description="Brasileiro selecionado pelo British Council entre líderes globais."
               year="2013"
               delay={0.1}
-              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2022/12/1400226_10151692115789499_1362031008_o.jpeg"
-              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2022/12/1400226_10151692115789499_1362031008_o.jpeg"
-              onImageError={() => setAwardImageError(true)}
+              imageUrl={AWARD_IMAGES.britishCouncil}
+              featuredImageUrl={AWARD_IMAGES.britishCouncil}
             />
             
             <AwardItem
@@ -206,9 +199,8 @@ const Index = () => {
               description="Londres - A mobCONTENT foi reconhecida como empresa brasileira de destaque por sua inovação"
               year="2015"
               delay={200}
-              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/07/Screenshot-2025-07-30-at-17.17.24.png"
-              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/07/Screenshot-2025-07-30-at-17.17.24.png"
-              onImageError={() => setAwardImageError(true)}
+              imageUrl={AWARD_IMAGES.powerToPixel}
+              featuredImageUrl={AWARD_IMAGES.powerToPixel}
             />
             
             <AwardItem
@@ -216,9 +208,8 @@ const Index = () => {
               description="França - Prêmio por projetos transmídia"
               year="2013"
               delay={400}
-              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/sunny-side-doc-awards.jpg"
-              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/sunny-side-doc-awards.jpg"
-              onImageError={() => setAwardImageError(true)}
+              imageUrl={AWARD_IMAGES.sunnySide}
+              featuredImageUrl={AWARD_IMAGES.sunnySide}
             />
             
             <AwardItem
@@ -226,9 +217,8 @@ const Index = () => {
               description="A série 'Garagem Maker' foi nomeada como melhor interprograma da América Latina"
               year="2018"
               delay={600}
-              imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCT4hPVbkPjgFDjVSRSJ43LfXaX6qmJCacnw&s"
-              featuredImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCT4hPVbkPjgFDjVSRSJ43LfXaX6qmJCacnw&s"
-              onImageError={() => setAwardImageError(true)}
+              imageUrl={AWARD_IMAGES.premioTal}
+              featuredImageUrl={AWARD_IMAGES.premioTal}
             />
             
             <AwardItem
@@ -236,9 +226,8 @@ const Index = () => {
               description="Obra 'Anastácia', de Marcos Ferreira, gerada com IA, selecionada com destaque pela revista alemã"
               year="2025"
               delay={800}
-              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/08/1736368093688.jpeg"
-              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2025/08/1736368093688.jpeg"
-              onImageError={() => setAwardImageError(true)}
+              imageUrl={AWARD_IMAGES.goldenTicket}
+              featuredImageUrl={AWARD_IMAGES.goldenTicket}
             />
 
             <AwardItem
@@ -246,9 +235,8 @@ const Index = () => {
               description="Empresa incubada e selecionada como destaque"
               year="2016"
               delay={1000}
-              imageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/certificado-rio-criativo.jpg"
-              featuredImageUrl="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/certificado-rio-criativo.jpg"
-              onImageError={() => setAwardImageError(true)}
+              imageUrl={AWARD_IMAGES.rioCriativo}
+              featuredImageUrl={AWARD_IMAGES.rioCriativo}
             />
           </div>
         </div>
@@ -278,10 +266,10 @@ const Index = () => {
               <div className="relative">
                 <div className="w-full h-96 bg-gradient-card rounded-2xl overflow-hidden shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
                   <img 
-                    src="https://cms.mobcontent.com.br/wp-content/uploads/2021/04/premio-tela-viva.jpg"
+                    src={aboutImageSrc}
                     alt="Marcos Ferreira - Da Comunicação ao Código"
                     className="w-full h-full object-cover"
-                    onError={() => setAwardImageError(true)}
+                    onError={() => setAboutImageSrc(heroImage.url)}
                   />
                 </div>
               </div>

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { ScrollReveal } from './ScrollReveal';
+import { PLACEHOLDER_IMAGE } from '@/lib/assets';
 
 interface AwardItemProps {
   title?: string;
@@ -7,7 +9,6 @@ interface AwardItemProps {
   delay?: number;
   imageUrl?: string;
   featuredImageUrl?: string;
-  onImageError?: () => void;
 }
 
 export const AwardItem = ({
@@ -17,18 +18,19 @@ export const AwardItem = ({
   delay = 0,
   imageUrl,
   featuredImageUrl,
-  onImageError
 }: AwardItemProps) => {
+  const [thumbSrc, setThumbSrc] = useState(imageUrl);
+  const [featuredSrc, setFeaturedSrc] = useState(featuredImageUrl);
+
   return (
     <ScrollReveal delay={delay}>
       <div className="flex gap-6 items-start">
-        {/* Imagem em destaque */}
-        {featuredImageUrl && (
+        {featuredImageUrl && featuredSrc && (
           <div className="hidden md:block flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
             <img
-              src={featuredImageUrl}
-              onError={onImageError}
-              alt={title || 'Award'}
+              src={featuredSrc}
+              onError={() => setFeaturedSrc(PLACEHOLDER_IMAGE)}
+              alt={title || 'Prêmio'}
               className="object-cover w-full h-full"
               width={128}
               height={128}
@@ -36,15 +38,14 @@ export const AwardItem = ({
             />
           </div>
         )}
-        
-        {/* Conteúdo do prêmio */}
+
         <div className="flex-1 flex items-start space-x-4 p-4 glass-morphism rounded-lg interactive-hover group">
-          {imageUrl && (
+          {imageUrl && thumbSrc && (
             <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden">
               <img
-                src={imageUrl}
-                onError={onImageError}
-                alt={title || 'Award'}
+                src={thumbSrc}
+                onError={() => setThumbSrc(PLACEHOLDER_IMAGE)}
+                alt={title || 'Prêmio'}
                 className="object-cover w-full h-full"
                 width={48}
                 height={48}

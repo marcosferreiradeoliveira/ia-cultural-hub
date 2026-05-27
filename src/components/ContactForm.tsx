@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
 import { Button } from '@/components/Button';
@@ -10,41 +10,41 @@ import {
   EMAILJS_TEMPLATE_ID,
 } from '@/lib/emailjs';
 
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
 export const ContactForm = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!formRef.current) return;
+
     setIsSubmitting(true);
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    const name = String(formData.get('name') ?? '').trim();
-    const email = String(formData.get('email') ?? '').trim();
-    const message = String(formData.get('message') ?? '').trim();
-
     try {
-      await emailjs.send(
+      await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        {
-          from_name: name,
-          from_email: email,
-          reply_to: email,
-          name,
-          email,
-          message,
-        },
-        EMAILJS_PUBLIC_KEY
+        formRef.current
       );
 
       toast.success('Mensagem enviada!', {
         description: 'Obrigado pelo contato. Responderei em breve.',
       });
-      form.reset();
-    } catch {
+      formRef.current.reset();
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : typeof error === 'object' && error !== null && 'text' in error
+            ? String((error as { text: string }).text)
+            : 'Erro desconhecido';
+
       toast.error('Não foi possível enviar', {
-        description: 'Tente novamente ou entre em contato pelo WhatsApp.',
+        description: message.includes('recipient')
+          ? 'Configure o e-mail destinatário no template do EmailJS.'
+          : 'Tente novamente ou entre em contato pelo WhatsApp.',
       });
     } finally {
       setIsSubmitting(false);
@@ -53,16 +53,17 @@ export const ContactForm = () => {
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border/30 bg-card/40 p-6 text-left backdrop-blur-sm sm:p-8"
     >
       <div className="space-y-2">
-        <label htmlFor="name" className="text-sm font-medium text-foreground">
+        <label htmlFor="user_name" className="text-sm font-medium text-foreground">
           Nome
         </label>
         <Input
-          id="name"
-          name="name"
+          id="user_name"
+          name="user_name"
           type="text"
           placeholder="Seu nome"
           required
@@ -72,12 +73,12 @@ export const ContactForm = () => {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="email" className="text-sm font-medium text-foreground">
+        <label htmlFor="user_email" className="text-sm font-medium text-foreground">
           E-mail
         </label>
         <Input
-          id="email"
-          name="email"
+          id="user_email"
+          name="user_email"
           type="email"
           placeholder="seu@email.com"
           required
