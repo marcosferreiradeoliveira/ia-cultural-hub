@@ -298,7 +298,7 @@ const Index = () => {
               <Button 
                 variant="primary" 
                 size="lg"
-                onClick={() => window.open('https://linkedin.com/in/marcosferreira', '_blank')}
+                onClick={() => window.open('https://www.linkedin.com/in/marcosfoliveira/', '_blank')}
               >
                 LinkedIn
               </Button>
@@ -314,7 +314,7 @@ const Index = () => {
               <Button 
                 variant="accent" 
                 size="lg"
-                onClick={() => window.open('https://mobcontent.com', '_blank')}
+                onClick={() => window.open('https://mobcontent.com.br', '_blank')}
               >
                 mobCONTENT
               </Button>
