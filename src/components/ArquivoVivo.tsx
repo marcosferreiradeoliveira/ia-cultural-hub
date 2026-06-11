@@ -2,7 +2,7 @@ import { ScrollReveal } from './ScrollReveal';
 import { TypeOnScroll } from './TypeOnScroll';
 import { CaseConcreto } from './CaseConcreto';
 import { useI18n } from '@/i18n';
-import anastaciaSrc from '@/assets/anastacia.jpeg';
+import anastaciaSrc from '@/assets/AnastaciaGrande.jpeg';
 import grioSrc from '@/assets/grio.jpeg';
 import zumbiSrc from '@/assets/zumbi.jpeg';
 import stellaSrc from '@/assets/stella.jpeg';
@@ -69,7 +69,7 @@ export const ArquivoVivo = () => {
       <ScrollReveal>
         <article className="anastacia-block min-h-[90vh] gap-0 border border-border/40">
           <div
-            className="anastacia-fragments relative min-h-[50vh] lg:min-h-full overflow-hidden cursor-data-target"
+            className="anastacia-fragments relative overflow-hidden cursor-data-target"
             data-cursor-data="anastacia_001.png | golden_ticket_2025 | weights::realigned"
             role="img"
             aria-label={t.arquivo.anastacia.ariaLabel}
