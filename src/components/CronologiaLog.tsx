@@ -1,41 +1,10 @@
 import { ScrollReveal } from './ScrollReveal';
+import { useI18n } from '@/i18n';
 import marcosSrc from '@/assets/marcos.jpeg';
 
-const LOG_EVENTS = [
-  {
-    year: '2013',
-    source: 'BRITISH COUNCIL',
-    message: 'Selecionado Young Creative Entrepreneur',
-  },
-  {
-    year: '2013',
-    source: 'SUNNY SIDE OF THE DOC (FRANÇA)',
-    message: 'Inovação Transmídia detectada',
-  },
-  {
-    year: '2015',
-    source: 'POWER TO THE PIXEL (LONDRES)',
-    message: 'Destaque de Vanguarda Latino-Americana',
-  },
-  {
-    year: '2016',
-    source: 'RIO CRIATIVO',
-    message: 'Incubação e aceleração de ecossistema',
-  },
-  {
-    year: '2018',
-    source: 'PRÊMIO TAL',
-    message: "'Garagem Maker' finalista continental",
-  },
-  {
-    year: '2025',
-    source: 'THE AI ART MAGAZINE',
-    message: "'Anastácia' recebe Golden Ticket",
-    highlight: true,
-  },
-] as const;
-
 export const CronologiaLog = () => {
+  const { t } = useI18n();
+
   return (
     <ScrollReveal delay={100}>
       <article className="cronologia-block border border-border/60 bg-black overflow-hidden">
@@ -46,7 +15,7 @@ export const CronologiaLog = () => {
           >
             <img
               src={marcosSrc}
-              alt="Marcos Ferreira — cronologia de impacto cultural e tecnológico"
+              alt={t.cronologia.alt}
               className="absolute inset-0 w-full h-full object-cover object-top glitch-image opacity-80 grayscale-[0.2] hover:grayscale-0 hover:opacity-95 transition-all duration-500"
               loading="lazy"
             />
@@ -72,7 +41,7 @@ export const CronologiaLog = () => {
               </p>
 
               <ol className="space-y-3 list-none">
-                {LOG_EVENTS.map((event, i) => (
+                {t.cronologia.events.map((event, i) => (
                   <li
                     key={`${event.year}-${event.source}`}
                     className={`cronologia-log-line opacity-0 [animation:fadeInUp_0.4s_ease-out_forwards] ${

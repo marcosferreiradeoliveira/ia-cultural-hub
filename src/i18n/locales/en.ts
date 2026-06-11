@@ -1,0 +1,183 @@
+import type { Translations } from './pt';
+
+export const en: Translations = {
+  meta: {
+    title: 'Marcos Ferreira - AI for Social Impact',
+    description:
+      'Managing partner at mobCONTENT. Pioneer in using AI for decolonial narratives and empowering marginalized communities.',
+  },
+  nav: {
+    manifesto: 'MANIFESTO',
+    arquivoVivo: 'LIVING ARCHIVE',
+    cronologia: 'CODE CHRONOLOGY',
+    contato: 'CONTACT',
+    goTo: 'Go to',
+  },
+  hero: {
+    lines: [
+      { text: '[DECOLONIAL SYSTEM]', accent: true },
+      { text: 'HACKING NEURAL NETWORKS.', accent: false },
+      { text: 'REBUILDING ERASED MEMORIES VIA AI.', accent: false },
+      { text: 'SUBVERTING SILENCE', accent: false },
+      { text: 'COMPUTATION BY BIT.', accent: false },
+    ],
+    executePortfolio: '[RUN PORTFOLIO.EXE]',
+  },
+  manifesto: {
+    code: '[01 // MANIFESTO]',
+    title: 'Technology to Generate Impact and Transform Realities',
+    titleGlitch: 'Technology to Generate Impact',
+    body: 'My philosophy is to use technology as a tool for social and cultural impact. I focus on decolonial narratives that recover memories and empower silenced voices — digital innovation fused with culture.',
+  },
+  arquivo: {
+    code: '[02 // LIVING ARCHIVE]',
+    title: 'Living Archive and',
+    titleAccent: 'Interventions',
+    subtitle: 'portfolio.exe — impact gallery',
+    anastacia: {
+      ariaLabel: 'Anastácia — generative AI artwork, fragmented',
+      typeText:
+        'Diffusion v2.1 — prompt inject: Anastácia, enslaved, iron mask, resistance. Tensor redirect → ancestral_memory.',
+      case:
+        'An AI-generated artwork that visually reconstructs the dignity of Anastácia Livre, selected and exhibited in galleries in Germany, Japan, Mexico, France, and Austria.',
+      stamp: 'Classified Archive',
+    },
+    soberania: {
+      title: 'Visual Sovereignty',
+      quote1: 'Where colonial history erased the image, we inject data.',
+      quote2: 'Generative AI as a tool for historical reparation.',
+      griot: {
+        alt: 'Griot AI — AI-generated portrait of Mohammed Gardo Baquaqua',
+        title: 'Griot AI',
+        desc: 'Mohammed Gardo Baquaqua — oracular memory recompiled.',
+        case: 'A research project focused on developing generative artificial intelligence trained to recover and narrate the historical biography of Baquaqua, an icon of the African diaspora.',
+      },
+      memoria: {
+        alt: 'Black Memory Museum in AI — Zumbi dos Palmares',
+        title: 'Black Memory Museum in AI',
+        desc: 'Germany · Austria — images the colonial archive denied.',
+        case: 'An international platform and exhibition that uses generative AI to visually recreate crucial moments and figures in Afro-Brazilian history that have no pictorial record.',
+      },
+    },
+    falatorio: {
+      title: 'Falatório in the Streets',
+      desc: 'Stella do Patrocínio — voice pasted on the wall. Open-air museum.',
+      qrHint: '↳ Point your phone at the QR on screen',
+      case: 'An urban art intervention that spreads posters (wheat-paste ads) with QR Codes across cities, allowing pedestrians to listen to the poetry of Black artist Stella do Patrocínio through their phones.',
+      alt: 'Stella do Patrocínio — Falatório in the Streets intervention',
+      qrAlt: 'QR Code — Falatório in the Streets. Scan with your phone.',
+    },
+    cartografias: {
+      title: 'Invisible Cartographies',
+      alt: 'Invisible Cartographies — flow map at Museu do Amanhã',
+      desc: "App 'Amanhã' — Museu do Amanhã. Not IoT. Not case study.",
+      descDetail:
+        'Beacon points blinking in the dark — flows of bodies in physical space, translated into lines of code.',
+      case: 'The official interactive visitation app for Museu do Amanhã, winner of the Best Internet of Things (IoT) App award in 2016, using beacon geolocation to map and guide the physical experience of visitors.',
+    },
+    lingua: {
+      title: 'Museum of the Portuguese Language',
+      alt: 'Museum of the Portuguese Language — audiovisual timeline',
+      desc: 'Audiovisual timeline · sound.archive',
+      descDetail:
+        'Production and licensing of historical video and audio content for the museum\'s permanent experience.',
+      case: 'Production and licensing of the audiovisual content that makes up the museum\'s historic timeline, developed in partnership with Fundação Roberto Marinho.',
+    },
+    diarios: {
+      alt: 'Diários de Bordo — AI-assisted fabulation platform',
+      title: 'Travel',
+      titleSuffix: 'Logs //',
+      titleAccent: 'Liquid Memory',
+      ariaLabel: 'Travel Logs — hover to reveal poetic fragments',
+      body: 'Literature is no longer static. Diários de Bordo subverts the act of writing through an AI-assisted fabulation platform. The software acts as an invisible co-pilot, stitching together pieces of reality, fiction, and machine learning.',
+      body2: 'An abstract cartography of the user\'s mind fused with the processor core.',
+      tag: 'poetry in fragments · glitch_art :: literary_reconstruction',
+      case: 'An innovative creative writing and literary fabulation app that uses generative artificial intelligence as co-author of users\' travel stories and diaries.',
+      fragments: [
+        'latitude zero...',
+        'the algorithm dreams of the sea...',
+        'corrupted data at 03:00',
+        'volatile memory :: buffer overflow',
+        'the narrative breathes in hexadecimal...',
+        'real-time fabulation...',
+        'the co-pilot writes alone...',
+        'fragment lost in cache...',
+        'syntax error in poetry...',
+        'emotional latency: 847ms',
+        'unsupervised dream tensor...',
+        '// reality.patch(0xFF)',
+        'the sea recalculates the tide...',
+        'corrupted diary :: version 0.∞',
+        'machine learning of longing...',
+      ],
+    },
+    oraculo: {
+      alt: 'Cultural Oracle — AI platform for cultural projects',
+      title: 'Cultural Oracle',
+      desc: 'Subscription platform — AI analyzes grants, approves cultural projects.',
+      case: 'A commercial SaaS tool that uses artificial intelligence to read public grant calls and optimize the writing of cultural projects to increase their chances of approval in funding laws.',
+    },
+  },
+  cronologia: {
+    code: '[03 // CODE CHRONOLOGY]',
+    title: 'System Log',
+    titleAccent: '// Critical Chronology',
+    subtitle: 'events.triggered — post-humanist report',
+    alt: 'Marcos Ferreira — cultural and technological impact chronology',
+    events: [
+      { year: '2013', source: 'BRITISH COUNCIL', message: 'Selected Young Creative Entrepreneur' },
+      { year: '2013', source: 'SUNNY SIDE OF THE DOC (FRANCE)', message: 'Transmedia Innovation detected' },
+      { year: '2015', source: 'POWER TO THE PIXEL (LONDON)', message: 'Latin American Vanguard Highlight' },
+      { year: '2016', source: 'RIO CRIATIVO', message: 'Ecosystem incubation and acceleration' },
+      { year: '2018', source: 'PRÊMIO TAL', message: "'Garagem Maker' continental finalist" },
+      { year: '2025', source: 'THE AI ART MAGAZINE', message: "'Anastácia' receives Golden Ticket", highlight: true },
+    ],
+  },
+  fusao: {
+    title: 'The Biological Fusion',
+    titleGlitch: 'The Biological Fusion',
+    intro:
+      'From the analog ether of TV UFRJ to the neural tensor — narrative and algorithm fused in the same data stream.',
+    slices: [
+      { lines: ['TV UFRJ · Rádio UFRJ', 'analog frequency', 'in the body before the pixel'] },
+      { lines: ['tensor.neural ::', 'Machine Learning', 'Product Management'] },
+      { lines: ['from ether to bit —', 'narrative and algorithm', 'fused in the same blood'] },
+      { lines: ['// biological fusion', 'multidisciplinary teams', 'experiences that breathe'] },
+    ],
+  },
+  contact: {
+    code: '[04 // CONTACT]',
+    title: 'Establish Connection',
+    subtitle: 'Initiate a data flow. Fill in the terminal lines below.',
+    linkedin: '[ -> LINKEDIN ]',
+    email: '[ -> EMAIL ]',
+    mobcontent: '[ -> MOBCONTENT ]',
+    form: {
+      init: '[INIT] Awaiting visitor input...',
+      name: 'NAME:',
+      email: 'EMAIL:',
+      message: 'MESSAGE:',
+      placeholder: '// type here...',
+      submit: '[TRIGGER DATA FLOW]',
+      submitting: '[TRANSMITTING...]',
+      protocol: '// protocol: emailjs :: secure.channel',
+      successTitle: 'Flow triggered.',
+      successDesc: 'Connection established. I will respond soon.',
+      errorTitle: 'Connection failed',
+      errorRecipient: 'Configure the recipient email in the EmailJS template.',
+      errorGeneric: 'Try again or use WhatsApp.',
+    },
+  },
+  footer: {
+    copy: '© 2024 Marcos Ferreira — Impact through technology',
+  },
+  common: {
+    concreto: '↳ Concrete',
+  },
+  language: {
+    label: 'Language',
+    pt: 'PT',
+    en: 'EN',
+    es: 'ES',
+  },
+};

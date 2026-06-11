@@ -11,9 +11,13 @@ import { ContactForm } from '../components/ContactForm';
 import { CustomCursor } from '@/components/CustomCursor';
 import { BrokenSectionHeader } from '@/components/BrokenSectionHeader';
 import { TypeOnScroll } from '@/components/TypeOnScroll';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useI18n } from '@/i18n';
 import heroImageSrc from '../assets/1718220391901.jpeg';
 
 const Index = () => {
+  const { t } = useI18n();
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ 
       behavior: 'smooth',
@@ -23,6 +27,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black relative overflow-x-hidden">
+      <LanguageSwitcher />
       <CustomCursor />
       <ParticleBackground />
       <GenerativeAtmosphere />
@@ -34,10 +39,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto broken-section">
           <div className="broken-grid broken-grid--manifesto">
             <BrokenSectionHeader
-              code="[01 // MANIFESTO]"
+              code={t.manifesto.code}
               title={
-                <h2 className="text-4xl lg:text-6xl font-display font-bold text-foreground glitch-title max-w-2xl" data-text="Tecnologia Para Gerar Impacto">
-                  Tecnologia Para Gerar Impacto e Transformar Realidades
+                <h2 className="text-4xl lg:text-6xl font-display font-bold text-foreground glitch-title max-w-2xl" data-text={t.manifesto.titleGlitch}>
+                  {t.manifesto.title}
                 </h2>
               }
             />
@@ -57,7 +62,7 @@ const Index = () => {
             <div className="broken-grid__text broken-grid__text--manifesto">
               <div className="dynamic-line w-24 mb-8" />
               <TypeOnScroll
-                text="Minha filosofia é usar a tecnologia como ferramenta de impacto social e cultural. Foco em narrativas decoloniais que resgatam memórias e empoderam vozes silenciadas — inovação digital fundida à cultura."
+                text={t.manifesto.body}
                 className="text-sm font-mono text-muted-foreground leading-relaxed max-w-lg"
                 speed={14}
               />
@@ -70,13 +75,13 @@ const Index = () => {
       <section id="arquivo-vivo" className="py-24 px-4 relative z-10 border-t border-border/30">
         <div className="max-w-7xl mx-auto broken-section">
           <BrokenSectionHeader
-            code="[02 // ARQUIVO VIVO]"
+            code={t.arquivo.code}
             title={
               <h2 className="text-4xl lg:text-6xl font-display font-bold text-foreground max-w-3xl">
-                Arquivo Vivo e <span className="text-gold">Intervenções</span>
+                {t.arquivo.title} <span className="text-gold">{t.arquivo.titleAccent}</span>
               </h2>
             }
-            subtitle="portfólio.exe — galeria de impacto"
+            subtitle={t.arquivo.subtitle}
             align="right"
           />
 
@@ -88,13 +93,13 @@ const Index = () => {
       <section id="cronologia" className="py-24 px-4 relative z-10 border-t border-border/30">
         <div className="max-w-6xl mx-auto broken-section">
           <BrokenSectionHeader
-            code="[03 // CRONOLOGIA DE CÓDIGO]"
+            code={t.cronologia.code}
             title={
               <h2 className="text-4xl lg:text-6xl font-display font-bold text-foreground max-w-3xl">
-                Log de Sistema <span className="text-gold">// Cronologia Crítica</span>
+                {t.cronologia.title} <span className="text-gold">{t.cronologia.titleAccent}</span>
               </h2>
             }
-            subtitle="eventos.disparados — relatório pós-humanista"
+            subtitle={t.cronologia.subtitle}
           />
 
           <CronologiaLog />
@@ -113,12 +118,12 @@ const Index = () => {
         <div className="max-w-4xl mx-auto broken-section">
           <ScrollReveal>
             <div className="broken-header broken-header--center mb-12">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-terminal-green mb-4">[04 // CONTATO]</p>
-              <h2 className="text-4xl lg:text-6xl font-display font-bold text-gold glitch-title" data-text="Estabelecer Conexão">
-                Estabelecer Conexão
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-terminal-green mb-4">{t.contact.code}</p>
+              <h2 className="text-4xl lg:text-6xl font-display font-bold text-gold glitch-title" data-text={t.contact.title}>
+                {t.contact.title}
               </h2>
               <TypeOnScroll
-                text="Inicie um fluxo de dados. Preencha as linhas do terminal abaixo."
+                text={t.contact.subtitle}
                 className="text-sm font-mono text-muted-foreground mt-6 max-w-2xl mx-auto"
                 speed={16}
               />
@@ -135,7 +140,7 @@ const Index = () => {
                 className="no-glitch"
                 onClick={() => window.open('https://www.linkedin.com/in/marcosfoliveira/', '_blank')}
               >
-                [ -&gt; LINKEDIN ]
+                {t.contact.linkedin}
               </Button>
               
               <Button 
@@ -144,7 +149,7 @@ const Index = () => {
                 className="no-glitch"
                 onClick={() => window.open('mailto:marcos@mobcontent.com', '_blank')}
               >
-                [ -&gt; EMAIL ]
+                {t.contact.email}
               </Button>
               
               <Button 
@@ -153,7 +158,7 @@ const Index = () => {
                 className="no-glitch"
                 onClick={() => window.open('https://mobcontent.com.br', '_blank')}
               >
-                [ -&gt; MOBCONTENT ]
+                {t.contact.mobcontent}
               </Button>
             </div>
           </ScrollReveal>
@@ -164,7 +169,7 @@ const Index = () => {
       <footer className="py-12 px-4 border-t border-border/30 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-            © 2024 Marcos Ferreira — Impacto através da tecnologia
+            {t.footer.copy}
           </p>
         </div>
       </footer>

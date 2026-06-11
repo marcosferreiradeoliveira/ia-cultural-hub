@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/Button';
+import { useI18n } from '@/i18n';
 import heroSrc from '@/assets/AnastaciaGrande.jpeg';
 
-const MANIFESTO_LINES = [
-  { text: '[SISTEMA DECOLONIAL]', accent: true },
-  { text: 'HACKEANDO REDES NEURAIS.', accent: false },
-  { text: 'RECONSTRUINDO MEMÓRIAS APAGADAS VIA IA.', accent: false },
-  { text: 'SUBVERTENDO O SILÊNCIO', accent: false },
-  { text: 'COMPUTAÇÃO POR BIT.', accent: false },
-];
-
 const COORDINATES = [
-  { id: '01', label: 'MANIFESTO', target: 'manifesto', position: 'top-left' },
-  { id: '02', label: 'ARQUIVO VIVO', target: 'arquivo-vivo', position: 'top-right' },
-  { id: '03', label: 'CRONOLOGIA DE CÓDIGO', target: 'cronologia', position: 'bottom-left' },
+  { id: '01', labelKey: 'manifesto' as const, target: 'manifesto', position: 'top-left' },
+  { id: '02', labelKey: 'arquivoVivo' as const, target: 'arquivo-vivo', position: 'top-right' },
+  { id: '03', labelKey: 'cronologia' as const, target: 'cronologia', position: 'bottom-left' },
 ] as const;
 
 interface ManifestoHeroProps {
@@ -21,8 +14,11 @@ interface ManifestoHeroProps {
 }
 
 export const ManifestoHero = ({ onNavigate }: ManifestoHeroProps) => {
+  const { t } = useI18n();
   const [activeLine, setActiveLine] = useState(0);
   const [visible, setVisible] = useState(true);
+
+  const lines = t.hero.lines;
 
   useEffect(() => {
     const blink = setInterval(() => {
@@ -30,7 +26,7 @@ export const ManifestoHero = ({ onNavigate }: ManifestoHeroProps) => {
     }, 480);
 
     const advance = setInterval(() => {
-      setActiveLine((i) => (i + 1) % MANIFESTO_LINES.length);
+      setActiveLine((i) => (i + 1) % lines.length);
       setVisible(true);
     }, 3200);
 
@@ -38,9 +34,9 @@ export const ManifestoHero = ({ onNavigate }: ManifestoHeroProps) => {
       clearInterval(blink);
       clearInterval(advance);
     };
-  }, []);
+  }, [lines.length]);
 
-  const line = MANIFESTO_LINES[activeLine];
+  const line = lines[activeLine];
 
   return (
     <section
@@ -60,22 +56,20 @@ export const ManifestoHero = ({ onNavigate }: ManifestoHeroProps) => {
         <div className="manifesto-hero__overlay absolute inset-0" aria-hidden />
       </div>
 
-      {/* Coordenadas nos cantos */}
       {COORDINATES.map((coord) => (
         <button
           key={coord.id}
           type="button"
           onClick={() => onNavigate(coord.target)}
           className={`manifesto-coord manifesto-coord--${coord.position} no-glitch`}
-          aria-label={`Ir para ${coord.label}`}
+          aria-label={`${t.nav.goTo} ${t.nav[coord.labelKey]}`}
         >
           <span className="text-terminal-green">[{coord.id}</span>
           <span className="text-muted-foreground"> // </span>
-          <span className="text-foreground">{coord.label}]</span>
+          <span className="text-foreground">{t.nav[coord.labelKey]}]</span>
         </button>
       ))}
 
-      {/* Texto central — loop poético, deslocado */}
       <div className="relative z-10 text-left max-w-5xl mx-auto w-full pl-4 sm:pl-8 lg:pl-16 lg:-translate-x-6">
         <p
           className={`manifesto-line font-display font-bold leading-[1.05] transition-opacity duration-100 ${
@@ -93,7 +87,7 @@ export const ManifestoHero = ({ onNavigate }: ManifestoHeroProps) => {
             className="manifesto-exec no-glitch tracking-[0.15em]"
             onClick={() => onNavigate('arquivo-vivo')}
           >
-            [EXECUTAR PORTFÓLIO.EXE]
+            {t.hero.executePortfolio}
           </Button>
 
           <button
@@ -101,12 +95,11 @@ export const ManifestoHero = ({ onNavigate }: ManifestoHeroProps) => {
             onClick={() => onNavigate('contato')}
             className="font-mono text-[10px] uppercase tracking-[0.35em] text-muted-foreground hover:text-terminal-green transition-colors no-glitch"
           >
-            [04 // CONTATO]
+            {t.contact.code}
           </button>
         </div>
       </div>
 
-      {/* Cursor terminal */}
       <div className="manifesto-cursor font-mono text-terminal-green text-xs" aria-hidden="true">
         <span>_</span>
       </div>

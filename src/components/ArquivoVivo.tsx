@@ -1,6 +1,7 @@
 import { ScrollReveal } from './ScrollReveal';
 import { TypeOnScroll } from './TypeOnScroll';
 import { CaseConcreto } from './CaseConcreto';
+import { useI18n } from '@/i18n';
 import anastaciaSrc from '@/assets/anastacia.jpeg';
 import grioSrc from '@/assets/grio.jpeg';
 import zumbiSrc from '@/assets/zumbi.jpeg';
@@ -61,16 +62,17 @@ const LINGUA_LOG = [
 ];
 
 export const ArquivoVivo = () => {
+  const { t } = useI18n();
+
   return (
     <div className="arquivo-vivo space-y-0">
-      {/* —— Anastácia —— */}
       <ScrollReveal>
         <article className="anastacia-block min-h-[90vh] gap-0 border border-border/40">
           <div
             className="anastacia-fragments relative min-h-[50vh] lg:min-h-full overflow-hidden cursor-data-target"
             data-cursor-data="anastacia_001.png | golden_ticket_2025 | weights::realigned"
             role="img"
-            aria-label="Anastácia — obra de IA generativa, fragmentada"
+            aria-label={t.arquivo.anastacia.ariaLabel}
           >
             {Array.from({ length: 9 }).map((_, i) => (
               <div
@@ -93,7 +95,7 @@ export const ArquivoVivo = () => {
                 // obra_001.anastacia
               </p>
               <TypeOnScroll
-                text="Diffusion v2.1 — prompt inject: Anastácia, escravizada, máscara de ferro, resistência. Tensor redirect → ancestral_memory."
+                text={t.arquivo.anastacia.typeText}
                 className="font-mono text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6 max-w-md"
                 speed={10}
               />
@@ -110,15 +112,14 @@ export const ArquivoVivo = () => {
                 ))}
               </div>
               <CaseConcreto>
-                Uma obra de arte gerada por IA que reconstrói visualmente a dignidade de Anastácia Livre,
-                selecionada e exposta em galerias na Alemanha, Japão, México, França e Áustria.
+                {t.arquivo.anastacia.case}
               </CaseConcreto>
             </div>
 
             <div className="mt-10 flex justify-end">
               <div className="classified-stamp rotate-[-4deg] border-2 border-digital-gold/80 px-4 py-3 text-center">
                 <p className="font-mono text-[9px] uppercase tracking-[0.4em] text-digital-gold">
-                  Arquivo Classificado
+                  {t.arquivo.anastacia.stamp}
                 </p>
                 <p className="font-display text-lg text-gold mt-1">The AI Art Magazine</p>
                 <p className="font-mono text-xs text-terminal-green">2025 — Golden Ticket</p>
@@ -128,24 +129,23 @@ export const ArquivoVivo = () => {
         </article>
       </ScrollReveal>
 
-      {/* —— Soberania Visual —— */}
       <ScrollReveal delay={200}>
         <article className="soberania-block py-20 px-6 lg:px-12 border-x border-b border-border/40">
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-terminal-green mb-4">
             // módulo.soberania_visual
           </p>
-          <h3 className="font-display text-3xl lg:text-5xl text-gold mb-8 glitch-title" data-text="Soberania Visual">
-            Soberania Visual
+          <h3 className="font-display text-3xl lg:text-5xl text-gold mb-8 glitch-title" data-text={t.arquivo.soberania.title}>
+            {t.arquivo.soberania.title}
           </h3>
           <blockquote className="font-display text-xl lg:text-3xl text-foreground leading-snug max-w-4xl mb-12 italic">
             <TypeOnScroll
-              text="Onde a história colonial apagou a imagem, nós injetamos dados."
+              text={t.arquivo.soberania.quote1}
               className="block"
               speed={16}
               as="span"
             />
             <TypeOnScroll
-              text="IA generativa como ferramenta de reparação histórica."
+              text={t.arquivo.soberania.quote2}
               className="block mt-4 text-muted-foreground not-italic font-mono text-sm lg:text-base"
               speed={12}
               as="span"
@@ -160,7 +160,7 @@ export const ArquivoVivo = () => {
               >
                 <img
                   src={grioSrc}
-                  alt="Griot AI — retrato gerado por IA de Mohammed Gardo Baquaqua"
+                  alt={t.arquivo.soberania.griot.alt}
                   className="w-full aspect-[4/5] object-cover object-top glitch-image grayscale opacity-90 hover:opacity-100 transition-opacity"
                   loading="lazy"
                 />
@@ -168,14 +168,13 @@ export const ArquivoVivo = () => {
               </div>
               <div className="soberania-panel__copy relative z-10 p-6 -mt-16 bg-black/80 backdrop-blur-sm border-t border-border/30">
                 <p className="font-mono text-[10px] text-terminal-green mb-2">[GRiot_AI.sys]</p>
-                <h4 className="font-display text-2xl text-foreground mb-3">Griot AI</h4>
+                <h4 className="font-display text-2xl text-foreground mb-3">{t.arquivo.soberania.griot.title}</h4>
                 <p className="font-mono text-xs text-muted-foreground leading-relaxed">
-                  Mohammed Gardo Baquaqua — memória oracular recompilada.
+                  {t.arquivo.soberania.griot.desc}
                   <span className="text-terminal-green"> dados.inject(diáspora)</span>
                 </p>
                 <CaseConcreto>
-                  Um projeto de pesquisa focado no desenvolvimento de uma inteligência artificial generativa
-                  treinada para resgatar e narrar a biografia histórica de Baquaqua, ícone da diáspora africana.
+                  {t.arquivo.soberania.griot.case}
                 </CaseConcreto>
               </div>
             </div>
@@ -186,7 +185,7 @@ export const ArquivoVivo = () => {
               >
                 <img
                   src={zumbiSrc}
-                  alt="Museu da Memória Negra em IA — Zumbi dos Palmares"
+                  alt={t.arquivo.soberania.memoria.alt}
                   className="w-full aspect-[4/5] object-cover object-top glitch-image grayscale opacity-90 hover:opacity-100 transition-opacity"
                   loading="lazy"
                 />
@@ -194,14 +193,13 @@ export const ArquivoVivo = () => {
               </div>
               <div className="soberania-panel__copy relative z-10 p-6 -mt-16 bg-black/80 backdrop-blur-sm border-t border-border/30">
                 <p className="font-mono text-[10px] text-terminal-green mb-2">[MEMÓRIA_NEGRA.db]</p>
-                <h4 className="font-display text-2xl text-foreground mb-3">Museu da Memória Negra em IA</h4>
+                <h4 className="font-display text-2xl text-foreground mb-3">{t.arquivo.soberania.memoria.title}</h4>
                 <p className="font-mono text-xs text-muted-foreground leading-relaxed">
-                  Alemanha · Áustria — imagens que o arquivo colonial negou.
+                  {t.arquivo.soberania.memoria.desc}
                   <span className="text-terminal-green"> render.história()</span>
                 </p>
                 <CaseConcreto>
-                  Uma plataforma e exposição internacional que usa IA generativa para recriar visualmente
-                  momentos e personagens cruciais da história afro-brasileira que não possuem registro pictórico.
+                  {t.arquivo.soberania.memoria.case}
                 </CaseConcreto>
               </div>
             </div>
@@ -209,7 +207,6 @@ export const ArquivoVivo = () => {
         </article>
       </ScrollReveal>
 
-      {/* —— Falatório —— */}
       <ScrollReveal delay={400}>
         <article className="falatorio-block relative min-h-[80vh] border-x border-b border-border/40 overflow-hidden">
           <div className="falatorio-wall absolute inset-0" />
@@ -219,17 +216,16 @@ export const ArquivoVivo = () => {
                 // intervenção.urbana
               </p>
               <h3 className="font-display text-3xl lg:text-4xl text-foreground mb-4">
-                Falatório nas Ruas
+                {t.arquivo.falatorio.title}
               </h3>
               <p className="font-mono text-xs text-muted-foreground leading-relaxed mb-4">
-                Stella do Patrocínio — voz colada no muro. Museu a céu aberto.
+                {t.arquivo.falatorio.desc}
               </p>
               <p className="font-mono text-[10px] uppercase tracking-widest text-gold animate-pulse mb-4">
-                ↳ Aponte seu celular para o QR na tela
+                {t.arquivo.falatorio.qrHint}
               </p>
               <CaseConcreto className="animate-none border-gold/30">
-                Uma intervenção de arte urbana que espalha cartazes (lambe-lambes) com QR Codes pelas cidades,
-                permitindo que pedestres ouçam as poesias da artista negra Stella do Patrocínio através do celular.
+                {t.arquivo.falatorio.case}
               </CaseConcreto>
             </div>
 
@@ -239,7 +235,7 @@ export const ArquivoVivo = () => {
             >
               <img
                 src={stellaSrc}
-                alt="Stella do Patrocínio — intervenção Falatório nas Ruas"
+                alt={t.arquivo.falatorio.alt}
                 className="w-full max-h-[55vh] object-cover object-center glitch-image border border-border/50 shadow-[14px_14px_0_rgba(0,0,0,0.55)] rotate-1 hover:rotate-0 transition-transform duration-500"
                 loading="lazy"
               />
@@ -258,7 +254,7 @@ export const ArquivoVivo = () => {
               </p>
               <img
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=0-0-0&bgcolor=212-211-209&data=${encodeURIComponent(FALATORIO_QR_URL)}`}
-                alt="QR Code — Falatório nas Ruas. Escaneie com seu celular."
+                alt={t.arquivo.falatorio.qrAlt}
                 width={180}
                 height={180}
                 className="mx-auto glitch-image mix-blend-multiply"
@@ -273,7 +269,6 @@ export const ArquivoVivo = () => {
         </article>
       </ScrollReveal>
 
-      {/* —— Cartografias Invisíveis —— */}
       <ScrollReveal delay={600}>
         <article className="cartografias-block border-x border-b border-border/40">
           <div className="grid lg:grid-cols-2">
@@ -283,7 +278,7 @@ export const ArquivoVivo = () => {
             >
               <img
                 src={cartografiasSrc}
-                alt="Cartografias Invisíveis — mapa de fluxos no Museu do Amanhã"
+                alt={t.arquivo.cartografias.alt}
                 className="absolute inset-0 w-full h-full object-cover glitch-image opacity-70 grayscale-[0.3] hover:grayscale-0 hover:opacity-90 transition-all duration-500"
                 loading="lazy"
               />
@@ -322,26 +317,22 @@ export const ArquivoVivo = () => {
                 // cartografias.invisíveis
               </p>
               <h3 className="font-display text-3xl lg:text-4xl text-gold mb-6">
-                Cartografias Invisíveis
+                {t.arquivo.cartografias.title}
               </h3>
               <p className="font-mono text-xs text-muted-foreground leading-relaxed mb-6">
-                App &apos;Amanhã&apos; — Museu do Amanhã. Não IoT. Não case study.
+                {t.arquivo.cartografias.desc}
                 <span className="block mt-3 text-foreground">
-                  Pontos de beacon piscando no escuro — fluxos de corpos no espaço físico,
-                  traduzidos em linhas de código.
+                  {t.arquivo.cartografias.descDetail}
                 </span>
               </p>
               <CaseConcreto>
-                O aplicativo oficial de visitação interativa do Museu do Amanhã, vencedor do prêmio de Melhor
-                Aplicativo de Internet das Coisas (IoT) em 2016, usando geolocalização por beacons para mapear
-                e guiar a experiência física do público.
+                {t.arquivo.cartografias.case}
               </CaseConcreto>
             </div>
           </div>
         </article>
       </ScrollReveal>
 
-      {/* —— Museu da Língua Portuguesa —— */}
       <ScrollReveal delay={650}>
         <article className="lingua-block border-x border-b border-border/40">
           <div className="grid lg:grid-cols-2">
@@ -351,7 +342,7 @@ export const ArquivoVivo = () => {
             >
               <img
                 src={mlpSrc}
-                alt="Museu da Língua Portuguesa — linha do tempo audiovisual"
+                alt={t.arquivo.lingua.alt}
                 className="absolute inset-0 w-full h-full object-cover glitch-image opacity-75 grayscale-[0.25] hover:grayscale-0 hover:opacity-90 transition-all duration-500"
                 loading="lazy"
               />
@@ -374,29 +365,26 @@ export const ArquivoVivo = () => {
                 // museu.lingua_portuguesa
               </p>
               <h3 className="font-display text-3xl lg:text-4xl text-gold mb-6">
-                Museu da Língua Portuguesa
+                {t.arquivo.lingua.title}
               </h3>
               <p className="font-mono text-xs text-muted-foreground leading-relaxed mb-6">
-                Linha do tempo audiovisual · arquivo.sonoro
+                {t.arquivo.lingua.desc}
                 <span className="block mt-3 text-foreground">
-                  Produção e licenciamento de conteúdo histórico em vídeo e áudio para a experiência permanente do museu.
+                  {t.arquivo.lingua.descDetail}
                 </span>
               </p>
               <CaseConcreto>
-                Produção e licenciamento do conteúdo audiovisual que compõe a histórica linha do tempo do museu,
-                desenvolvido em parceria com a Fundação Roberto Marinho.
+                {t.arquivo.lingua.case}
               </CaseConcreto>
             </div>
           </div>
         </article>
       </ScrollReveal>
 
-      {/* —— Diários de Bordo —— */}
       <ScrollReveal delay={700}>
         <DiariosDeBordoCase />
       </ScrollReveal>
 
-      {/* —— Oráculo Cultural —— */}
       <ScrollReveal delay={900}>
         <article className="oraculo-block border-x border-b border-border/40">
           <div className="grid lg:grid-cols-2">
@@ -406,7 +394,7 @@ export const ArquivoVivo = () => {
             >
               <img
                 src={oraculoSrc}
-                alt="Oráculo Cultural — plataforma de IA para projetos culturais"
+                alt={t.arquivo.oraculo.alt}
                 className="absolute inset-0 w-full h-full object-cover glitch-image opacity-75 grayscale-[0.25] hover:grayscale-0 hover:opacity-90 transition-all duration-500"
                 loading="lazy"
               />
@@ -419,15 +407,14 @@ export const ArquivoVivo = () => {
             <div className="oraculo-copy p-8 lg:p-12 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-border/40">
               <p className="font-mono text-[10px] text-terminal-green mb-2">[ORÁCULO_CULTURAL.exe]</p>
               <h3 className="font-display text-3xl lg:text-4xl text-gold mb-6">
-                Oráculo Cultural
+                {t.arquivo.oraculo.title}
               </h3>
               <p className="font-mono text-xs text-muted-foreground max-w-2xl">
-                Plataforma de assinatura — IA analisa editais, aprova projetos culturais.
+                {t.arquivo.oraculo.desc}
                 <span className="text-gold"> exec.awaiting(user_input)</span>
               </p>
               <CaseConcreto>
-                Uma ferramenta SaaS comercial que utiliza inteligência artificial para ler editais públicos e otimizar
-                a escrita de projetos culturais para aumentar suas chances de aprovação em leis de fomento.
+                {t.arquivo.oraculo.case}
               </CaseConcreto>
             </div>
           </div>

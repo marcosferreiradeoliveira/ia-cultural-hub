@@ -1,25 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 import { TypeOnScroll } from './TypeOnScroll';
 import { CaseConcreto } from './CaseConcreto';
+import { useI18n } from '@/i18n';
 import diariosSrc from '@/assets/diariosdebordo.jpeg';
-
-const POETRY_FRAGMENTS = [
-  'latitude zero...',
-  'o algoritmo sonha com o mar...',
-  'dados corrompidos às 03:00',
-  'memória volátil :: buffer overflow',
-  'a narrativa respira em hexadecimal...',
-  'fabulação em tempo real...',
-  'o co-piloto escreve sozinho...',
-  'fragmento perdido no cache...',
-  'syntax error na poesia...',
-  'latência emocional: 847ms',
-  'tensor de sonhos não supervisionados...',
-  '// realidade.patch(0xFF)',
-  'o mar recalcula a maré...',
-  'diário corrompido :: versão 0.∞',
-  'machine learning de saudades...',
-] as const;
 
 interface FloatingFragment {
   id: string;
@@ -31,12 +14,14 @@ interface FloatingFragment {
 }
 
 export const DiariosDeBordoCase = () => {
+  const { t } = useI18n();
   const articleRef = useRef<HTMLElement>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [fragments, setFragments] = useState<FloatingFragment[]>([]);
 
   const spawnFragment = useCallback(() => {
-    const text = POETRY_FRAGMENTS[Math.floor(Math.random() * POETRY_FRAGMENTS.length)];
+    const fragmentsList = t.arquivo.diarios.fragments;
+    const text = fragmentsList[Math.floor(Math.random() * fragmentsList.length)];
     const tones: FloatingFragment['tone'][] = ['green', 'gold', 'muted'];
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 
@@ -54,7 +39,7 @@ export const DiariosDeBordoCase = () => {
     window.setTimeout(() => {
       setFragments((prev) => prev.filter((item) => item.id !== id));
     }, 350 + Math.random() * 550);
-  }, []);
+  }, [t.arquivo.diarios.fragments]);
 
   const handleDiariosEnter = () => {
     spawnFragment();
@@ -91,7 +76,7 @@ export const DiariosDeBordoCase = () => {
         >
           <img
             src={diariosSrc}
-            alt="Diários de Bordo — plataforma de fabulação assistida por IA"
+            alt={t.arquivo.diarios.alt}
             className="absolute inset-0 w-full h-full object-cover glitch-image opacity-80 grayscale-[0.4] hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             loading="lazy"
           />
@@ -114,27 +99,26 @@ export const DiariosDeBordoCase = () => {
               onMouseLeave={handleDiariosLeave}
               onFocus={handleDiariosEnter}
               onBlur={handleDiariosLeave}
-              aria-label="Diários — passe o cursor para revelar fragmentos poéticos"
+              aria-label={t.arquivo.diarios.ariaLabel}
             >
-              Diários
+              {t.arquivo.diarios.title}
             </button>
-            {' de Bordo // '}
-            <span className="text-foreground">Memória Líquida</span>
+            {' '}{t.arquivo.diarios.titleSuffix}{' '}
+            <span className="text-foreground">{t.arquivo.diarios.titleAccent}</span>
           </h3>
           <TypeOnScroll
-            text="A literatura deixou de ser estática. Diários de Bordo subverte o ato da escrita através de uma plataforma de fabulação assistida por IA. O software atua como um co-piloto invisível, colando pedaços de realidade, ficção e machine learning."
+            text={t.arquivo.diarios.body}
             className="font-mono text-xs text-muted-foreground leading-relaxed mb-4"
             speed={10}
           />
           <p className="font-mono text-xs text-foreground leading-relaxed mb-4">
-            Uma cartografia abstrata da mente do utilizador fundida com o núcleo do processador.
+            {t.arquivo.diarios.body2}
           </p>
           <p className="font-mono text-[10px] text-terminal-green/70 uppercase tracking-widest mb-2">
-            poesia em fragmentos · glitch_art :: reconstrução_literária
+            {t.arquivo.diarios.tag}
           </p>
           <CaseConcreto>
-            Um aplicativo inovador de escrita criativa e fabulação literária que utiliza inteligência artificial
-            generativa como coautora de relatos e diários de viagem dos usuários.
+            {t.arquivo.diarios.case}
           </CaseConcreto>
         </div>
       </div>

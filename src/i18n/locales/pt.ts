@@ -1,0 +1,183 @@
+export const pt = {
+  meta: {
+    title: 'Marcos Ferreira - IA para Impacto Social',
+    description:
+      'Sócio-diretor da mobCONTENT. Pioneiro no uso de IA para narrativas decoloniais e empoderamento de comunidades marginalizadas.',
+  },
+  nav: {
+    manifesto: 'MANIFESTO',
+    arquivoVivo: 'ARQUIVO VIVO',
+    cronologia: 'CRONOLOGIA DE CÓDIGO',
+    contato: 'CONTATO',
+    goTo: 'Ir para',
+  },
+  hero: {
+    lines: [
+      { text: '[SISTEMA DECOLONIAL]', accent: true },
+      { text: 'HACKEANDO REDES NEURAIS.', accent: false },
+      { text: 'RECONSTRUINDO MEMÓRIAS APAGADAS VIA IA.', accent: false },
+      { text: 'SUBVERTENDO O SILÊNCIO', accent: false },
+      { text: 'COMPUTAÇÃO POR BIT.', accent: false },
+    ],
+    executePortfolio: '[EXECUTAR PORTFÓLIO.EXE]',
+  },
+  manifesto: {
+    code: '[01 // MANIFESTO]',
+    title: 'Tecnologia Para Gerar Impacto e Transformar Realidades',
+    titleGlitch: 'Tecnologia Para Gerar Impacto',
+    body: 'Minha filosofia é usar a tecnologia como ferramenta de impacto social e cultural. Foco em narrativas decoloniais que resgatam memórias e empoderam vozes silenciadas — inovação digital fundida à cultura.',
+  },
+  arquivo: {
+    code: '[02 // ARQUIVO VIVO]',
+    title: 'Arquivo Vivo e',
+    titleAccent: 'Intervenções',
+    subtitle: 'portfólio.exe — galeria de impacto',
+    anastacia: {
+      ariaLabel: 'Anastácia — obra de IA generativa, fragmentada',
+      typeText:
+        'Diffusion v2.1 — prompt inject: Anastácia, escravizada, máscara de ferro, resistência. Tensor redirect → ancestral_memory.',
+      case:
+        'Uma obra de arte gerada por IA que reconstrói visualmente a dignidade de Anastácia Livre, selecionada e exposta em galerias na Alemanha, Japão, México, França e Áustria.',
+      stamp: 'Arquivo Classificado',
+    },
+    soberania: {
+      title: 'Soberania Visual',
+      quote1: 'Onde a história colonial apagou a imagem, nós injetamos dados.',
+      quote2: 'IA generativa como ferramenta de reparação histórica.',
+      griot: {
+        alt: 'Griot AI — retrato gerado por IA de Mohammed Gardo Baquaqua',
+        title: 'Griot AI',
+        desc: 'Mohammed Gardo Baquaqua — memória oracular recompilada.',
+        case: 'Um projeto de pesquisa focado no desenvolvimento de uma inteligência artificial generativa treinada para resgatar e narrar a biografia histórica de Baquaqua, ícone da diáspora africana.',
+      },
+      memoria: {
+        alt: 'Museu da Memória Negra em IA — Zumbi dos Palmares',
+        title: 'Museu da Memória Negra em IA',
+        desc: 'Alemanha · Áustria — imagens que o arquivo colonial negou.',
+        case: 'Uma plataforma e exposição internacional que usa IA generativa para recriar visualmente momentos e personagens cruciais da história afro-brasileira que não possuem registro pictórico.',
+      },
+    },
+    falatorio: {
+      title: 'Falatório nas Ruas',
+      desc: 'Stella do Patrocínio — voz colada no muro. Museu a céu aberto.',
+      qrHint: '↳ Aponte seu celular para o QR na tela',
+      case: 'Uma intervenção de arte urbana que espalha cartazes (lambe-lambes) com QR Codes pelas cidades, permitindo que pedestres ouçam as poesias da artista negra Stella do Patrocínio através do celular.',
+      alt: 'Stella do Patrocínio — intervenção Falatório nas Ruas',
+      qrAlt: 'QR Code — Falatório nas Ruas. Escaneie com seu celular.',
+    },
+    cartografias: {
+      title: 'Cartografias Invisíveis',
+      alt: 'Cartografias Invisíveis — mapa de fluxos no Museu do Amanhã',
+      desc: "App 'Amanhã' — Museu do Amanhã. Não IoT. Não case study.",
+      descDetail:
+        'Pontos de beacon piscando no escuro — fluxos de corpos no espaço físico, traduzidos em linhas de código.',
+      case: 'O aplicativo oficial de visitação interativa do Museu do Amanhã, vencedor do prêmio de Melhor Aplicativo de Internet das Coisas (IoT) em 2016, usando geolocalização por beacons para mapear e guiar a experiência física do público.',
+    },
+    lingua: {
+      title: 'Museu da Língua Portuguesa',
+      alt: 'Museu da Língua Portuguesa — linha do tempo audiovisual',
+      desc: 'Linha do tempo audiovisual · arquivo.sonoro',
+      descDetail:
+        'Produção e licenciamento de conteúdo histórico em vídeo e áudio para a experiência permanente do museu.',
+      case: 'Produção e licenciamento do conteúdo audiovisual que compõe a histórica linha do tempo do museu, desenvolvido em parceria com a Fundação Roberto Marinho.',
+    },
+    diarios: {
+      alt: 'Diários de Bordo — plataforma de fabulação assistida por IA',
+      title: 'Diários',
+      titleSuffix: 'de Bordo //',
+      titleAccent: 'Memória Líquida',
+      ariaLabel: 'Diários — passe o cursor para revelar fragmentos poéticos',
+      body: 'A literatura deixou de ser estática. Diários de Bordo subverte o ato da escrita através de uma plataforma de fabulação assistida por IA. O software atua como um co-piloto invisível, colando pedaços de realidade, ficção e machine learning.',
+      body2: 'Uma cartografia abstrata da mente do utilizador fundida com o núcleo do processador.',
+      tag: 'poesia em fragmentos · glitch_art :: reconstrução_literária',
+      case: 'Um aplicativo inovador de escrita criativa e fabulação literária que utiliza inteligência artificial generativa como coautora de relatos e diários de viagem dos usuários.',
+      fragments: [
+        'latitude zero...',
+        'o algoritmo sonha com o mar...',
+        'dados corrompidos às 03:00',
+        'memória volátil :: buffer overflow',
+        'a narrativa respira em hexadecimal...',
+        'fabulação em tempo real...',
+        'o co-piloto escreve sozinho...',
+        'fragmento perdido no cache...',
+        'syntax error na poesia...',
+        'latência emocional: 847ms',
+        'tensor de sonhos não supervisionados...',
+        '// realidade.patch(0xFF)',
+        'o mar recalcula a maré...',
+        'diário corrompido :: versão 0.∞',
+        'machine learning de saudades...',
+      ],
+    },
+    oraculo: {
+      alt: 'Oráculo Cultural — plataforma de IA para projetos culturais',
+      title: 'Oráculo Cultural',
+      desc: 'Plataforma de assinatura — IA analisa editais, aprova projetos culturais.',
+      case: 'Uma ferramenta SaaS comercial que utiliza inteligência artificial para ler editais públicos e otimizar a escrita de projetos culturais para aumentar suas chances de aprovação em leis de fomento.',
+    },
+  },
+  cronologia: {
+    code: '[03 // CRONOLOGIA DE CÓDIGO]',
+    title: 'Log de Sistema',
+    titleAccent: '// Cronologia Crítica',
+    subtitle: 'eventos.disparados — relatório pós-humanista',
+    alt: 'Marcos Ferreira — cronologia de impacto cultural e tecnológico',
+    events: [
+      { year: '2013', source: 'BRITISH COUNCIL', message: 'Selecionado Young Creative Entrepreneur' },
+      { year: '2013', source: 'SUNNY SIDE OF THE DOC (FRANÇA)', message: 'Inovação Transmídia detectada' },
+      { year: '2015', source: 'POWER TO THE PIXEL (LONDRES)', message: 'Destaque de Vanguarda Latino-Americana' },
+      { year: '2016', source: 'RIO CRIATIVO', message: 'Incubação e aceleração de ecossistema' },
+      { year: '2018', source: 'PRÊMIO TAL', message: "'Garagem Maker' finalista continental" },
+      { year: '2025', source: 'THE AI ART MAGAZINE', message: "'Anastácia' recebe Golden Ticket", highlight: true },
+    ],
+  },
+  fusao: {
+    title: 'A Fusão Biológica',
+    titleGlitch: 'A Fusão Biológica',
+    intro:
+      'Do éter analógico da TV UFRJ ao tensor neural — narrativa e algoritmo fundidos no mesmo fluxo de dados.',
+    slices: [
+      { lines: ['TV UFRJ · Rádio UFRJ', 'frequência analógica', 'no corpo antes do pixel'] },
+      { lines: ['tensor.neural ::', 'Machine Learning', 'Gestão de Produtos'] },
+      { lines: ['do éter ao bit —', 'narrativa e algoritmo', 'fundidos no mesmo sangue'] },
+      { lines: ['// fusão biológica', 'equipes multidisciplinares', 'experiências que respiram'] },
+    ],
+  },
+  contact: {
+    code: '[04 // CONTATO]',
+    title: 'Estabelecer Conexão',
+    subtitle: 'Inicie um fluxo de dados. Preencha as linhas do terminal abaixo.',
+    linkedin: '[ -> LINKEDIN ]',
+    email: '[ -> EMAIL ]',
+    mobcontent: '[ -> MOBCONTENT ]',
+    form: {
+      init: '[INIT] Aguardando input do visitante...',
+      name: 'NOME:',
+      email: 'EMAIL:',
+      message: 'MENSAGEM:',
+      placeholder: '// digite aqui...',
+      submit: '[DISPARAR FLUXO DE DADOS]',
+      submitting: '[TRANSMITINDO...]',
+      protocol: '// protocolo: emailjs :: canal.seguro',
+      successTitle: 'Fluxo disparado.',
+      successDesc: 'Conexão estabelecida. Responderei em breve.',
+      errorTitle: 'Falha na conexão',
+      errorRecipient: 'Configure o e-mail destinatário no template do EmailJS.',
+      errorGeneric: 'Tente novamente ou use o WhatsApp.',
+    },
+  },
+  footer: {
+    copy: '© 2024 Marcos Ferreira — Impacto através da tecnologia',
+  },
+  common: {
+    concreto: '↳ Concreto',
+  },
+  language: {
+    label: 'Idioma',
+    pt: 'PT',
+    en: 'EN',
+    es: 'ES',
+  },
+} as const;
+
+export type Translations = typeof pt;

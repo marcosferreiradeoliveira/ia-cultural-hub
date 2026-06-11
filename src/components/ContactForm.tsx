@@ -2,6 +2,7 @@ import { FormEvent, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
 import { Button } from '@/components/Button';
+import { useI18n } from '@/i18n';
 import {
   EMAILJS_PUBLIC_KEY,
   EMAILJS_SERVICE_ID,
@@ -11,6 +12,7 @@ import {
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 export const ContactForm = () => {
+  const { t } = useI18n();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -27,8 +29,8 @@ export const ContactForm = () => {
         formRef.current
       );
 
-      toast.success('Fluxo disparado.', {
-        description: 'Conexão estabelecida. Responderei em breve.',
+      toast.success(t.contact.form.successTitle, {
+        description: t.contact.form.successDesc,
       });
       formRef.current.reset();
     } catch (error) {
@@ -37,12 +39,12 @@ export const ContactForm = () => {
           ? error.message
           : typeof error === 'object' && error !== null && 'text' in error
             ? String((error as { text: string }).text)
-            : 'Erro desconhecido';
+            : 'unknown';
 
-      toast.error('Falha na conexão', {
+      toast.error(t.contact.form.errorTitle, {
         description: message.includes('recipient')
-          ? 'Configure o e-mail destinatário no template do EmailJS.'
-          : 'Tente novamente ou use o WhatsApp.',
+          ? t.contact.form.errorRecipient
+          : t.contact.form.errorGeneric,
       });
     } finally {
       setIsSubmitting(false);
@@ -66,12 +68,12 @@ export const ContactForm = () => {
 
       <div className="conexao-terminal-body p-6 sm:p-8 font-mono text-sm space-y-8">
         <p className="text-terminal-green text-xs">
-          [INIT] Aguardando input do visitante...
+          {t.contact.form.init}
         </p>
 
         <div className="conexao-field">
           <label htmlFor="user_name" className="conexao-prompt">
-            <span className="text-terminal-green">&gt;</span> NOME:
+            <span className="text-terminal-green">&gt;</span> {t.contact.form.name}
           </label>
           <input
             id="user_name"
@@ -87,7 +89,7 @@ export const ContactForm = () => {
 
         <div className="conexao-field">
           <label htmlFor="user_email" className="conexao-prompt">
-            <span className="text-terminal-green">&gt;</span> EMAIL:
+            <span className="text-terminal-green">&gt;</span> {t.contact.form.email}
           </label>
           <input
             id="user_email"
@@ -103,7 +105,7 @@ export const ContactForm = () => {
 
         <div className="conexao-field">
           <label htmlFor="message" className="conexao-prompt">
-            <span className="text-terminal-green">&gt;</span> MENSAGEM:
+            <span className="text-terminal-green">&gt;</span> {t.contact.form.message}
           </label>
           <textarea
             id="message"
@@ -111,7 +113,7 @@ export const ContactForm = () => {
             required
             disabled={isSubmitting}
             rows={4}
-            placeholder="// digite aqui..."
+            placeholder={t.contact.form.placeholder}
             className="conexao-input conexao-input--area"
           />
         </div>
@@ -124,12 +126,12 @@ export const ContactForm = () => {
             className="w-full sm:w-auto tracking-[0.12em] no-glitch"
             disabled={isSubmitting}
           >
-            {isSubmitting ? '[TRANSMITINDO...]' : '[DISPARAR FLUXO DE DADOS]'}
+            {isSubmitting ? t.contact.form.submitting : t.contact.form.submit}
           </Button>
         </div>
 
         <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
-          // protocolo: emailjs :: canal.seguro
+          {t.contact.form.protocol}
         </p>
       </div>
     </form>

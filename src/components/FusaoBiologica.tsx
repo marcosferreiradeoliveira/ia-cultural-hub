@@ -1,44 +1,6 @@
 import { ScrollReveal } from './ScrollReveal';
 import { TypeOnScroll } from './TypeOnScroll';
-
-const TEXT_SLICES = [
-  {
-    id: 'a',
-    className: 'fusao-slice fusao-slice--a',
-    lines: [
-      'TV UFRJ · Rádio UFRJ',
-      'frequência analógica',
-      'no corpo antes do pixel',
-    ],
-  },
-  {
-    id: 'b',
-    className: 'fusao-slice fusao-slice--b',
-    lines: [
-      'tensor.neural ::',
-      'Machine Learning',
-      'Gestão de Produtos',
-    ],
-  },
-  {
-    id: 'c',
-    className: 'fusao-slice fusao-slice--c',
-    lines: [
-      'do éter ao bit —',
-      'narrativa e algoritmo',
-      'fundidos no mesmo sangue',
-    ],
-  },
-  {
-    id: 'd',
-    className: 'fusao-slice fusao-slice--d',
-    lines: [
-      '// fusão biológica',
-      'equipes multidisciplinares',
-      'experiências que respiram',
-    ],
-  },
-] as const;
+import { useI18n } from '@/i18n';
 
 const NeuralRadioFusion = () => (
   <svg
@@ -55,7 +17,6 @@ const NeuralRadioFusion = () => (
       </linearGradient>
     </defs>
 
-    {/* Rede neural — esquerda */}
     {[
       [80, 120], [80, 250], [80, 380],
       [180, 180], [180, 320],
@@ -73,7 +34,6 @@ const NeuralRadioFusion = () => (
       <path key={`e${i}`} d={d} fill="none" stroke="hsl(43, 76%, 48%)" strokeWidth="1" opacity="0.5" className="fusao-edge" />
     ))}
 
-    {/* Ondas de rádio — direita */}
     {[0, 1, 2, 3, 4].map((i) => (
       <path
         key={`w${i}`}
@@ -86,7 +46,6 @@ const NeuralRadioFusion = () => (
       />
     ))}
 
-    {/* Zona de fusão — centro */}
     <ellipse cx="400" cy="250" rx="60" ry="90" fill="none" stroke="hsl(43, 76%, 48%)" strokeWidth="1" opacity="0.3" className="fusao-merge-pulse" />
     {[...Array(6)].map((_, i) => {
       const angle = (i / 6) * Math.PI * 2;
@@ -117,6 +76,8 @@ const NeuralRadioFusion = () => (
 );
 
 export const FusaoBiologica = () => {
+  const { t } = useI18n();
+
   return (
     <ScrollReveal>
       <article className="fusao-biologica relative min-h-[85vh] border border-border/40 overflow-hidden">
@@ -128,19 +89,19 @@ export const FusaoBiologica = () => {
             // módulo.biografia — fusao.biologica
           </p>
 
-          <h2 className="font-display text-4xl lg:text-6xl text-gold mb-12 max-w-lg glitch-title" data-text="A Fusão Biológica">
-            A Fusão Biológica
+          <h2 className="font-display text-4xl lg:text-6xl text-gold mb-12 max-w-lg glitch-title" data-text={t.fusao.titleGlitch}>
+            {t.fusao.title}
           </h2>
 
           <TypeOnScroll
-            text="Do éter analógico da TV UFRJ ao tensor neural — narrativa e algoritmo fundidos no mesmo fluxo de dados."
+            text={t.fusao.intro}
             className="font-mono text-xs text-muted-foreground mb-12 max-w-xl"
             speed={12}
           />
 
           <div className="fusao-slices-grid relative min-h-[50vh]">
-            {TEXT_SLICES.map((slice) => (
-              <div key={slice.id} className={slice.className}>
+            {t.fusao.slices.map((slice, index) => (
+              <div key={index} className={`fusao-slice fusao-slice--${String.fromCharCode(97 + index)}`}>
                 {slice.lines.map((line, i) => (
                   <p
                     key={line}
