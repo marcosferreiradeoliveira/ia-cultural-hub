@@ -2,8 +2,6 @@ import { FormEvent, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
 import { Button } from '@/components/Button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import {
   EMAILJS_PUBLIC_KEY,
   EMAILJS_SERVICE_ID,
@@ -29,8 +27,8 @@ export const ContactForm = () => {
         formRef.current
       );
 
-      toast.success('Mensagem enviada!', {
-        description: 'Obrigado pelo contato. Responderei em breve.',
+      toast.success('Fluxo disparado.', {
+        description: 'Conexão estabelecida. Responderei em breve.',
       });
       formRef.current.reset();
     } catch (error) {
@@ -41,10 +39,10 @@ export const ContactForm = () => {
             ? String((error as { text: string }).text)
             : 'Erro desconhecido';
 
-      toast.error('Não foi possível enviar', {
+      toast.error('Falha na conexão', {
         description: message.includes('recipient')
           ? 'Configure o e-mail destinatário no template do EmailJS.'
-          : 'Tente novamente ou entre em contato pelo WhatsApp.',
+          : 'Tente novamente ou use o WhatsApp.',
       });
     } finally {
       setIsSubmitting(false);
@@ -55,62 +53,85 @@ export const ContactForm = () => {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="mx-auto max-w-xl space-y-5 rounded-2xl border border-border/30 bg-card/40 p-6 text-left backdrop-blur-sm sm:p-8"
+      className="conexao-terminal mx-auto max-w-2xl text-left border border-border/60 bg-black overflow-hidden"
     >
-      <div className="space-y-2">
-        <label htmlFor="user_name" className="text-sm font-medium text-foreground">
-          Nome
-        </label>
-        <Input
-          id="user_name"
-          name="user_name"
-          type="text"
-          placeholder="Seu nome"
-          required
-          disabled={isSubmitting}
-          className="glass-morphism border-border/40"
-        />
+      <div className="conexao-terminal-bar flex items-center gap-2 px-4 py-2 border-b border-border/40 bg-muted/20">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-900/80" />
+        <span className="w-2.5 h-2.5 rounded-full bg-yellow-900/80" />
+        <span className="w-2.5 h-2.5 rounded-full bg-green-900/80" />
+        <span className="ml-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+          conexao.sh — estabelecer_link
+        </span>
       </div>
 
-      <div className="space-y-2">
-        <label htmlFor="user_email" className="text-sm font-medium text-foreground">
-          E-mail
-        </label>
-        <Input
-          id="user_email"
-          name="user_email"
-          type="email"
-          placeholder="seu@email.com"
-          required
-          disabled={isSubmitting}
-          className="glass-morphism border-border/40"
-        />
-      </div>
+      <div className="conexao-terminal-body p-6 sm:p-8 font-mono text-sm space-y-8">
+        <p className="text-terminal-green text-xs">
+          [INIT] Aguardando input do visitante...
+        </p>
 
-      <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-medium text-foreground">
-          Mensagem
-        </label>
-        <Textarea
-          id="message"
-          name="message"
-          placeholder="Como posso ajudar?"
-          rows={5}
-          required
-          disabled={isSubmitting}
-          className="glass-morphism min-h-[120px] border-border/40"
-        />
-      </div>
+        <div className="conexao-field">
+          <label htmlFor="user_name" className="conexao-prompt">
+            <span className="text-terminal-green">&gt;</span> NOME:
+          </label>
+          <input
+            id="user_name"
+            name="user_name"
+            type="text"
+            required
+            disabled={isSubmitting}
+            autoComplete="name"
+            placeholder="______________________________"
+            className="conexao-input"
+          />
+        </div>
 
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        className="w-full"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
-      </Button>
+        <div className="conexao-field">
+          <label htmlFor="user_email" className="conexao-prompt">
+            <span className="text-terminal-green">&gt;</span> EMAIL:
+          </label>
+          <input
+            id="user_email"
+            name="user_email"
+            type="email"
+            required
+            disabled={isSubmitting}
+            autoComplete="email"
+            placeholder="______________________________"
+            className="conexao-input"
+          />
+        </div>
+
+        <div className="conexao-field">
+          <label htmlFor="message" className="conexao-prompt">
+            <span className="text-terminal-green">&gt;</span> MENSAGEM:
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            disabled={isSubmitting}
+            rows={4}
+            placeholder="// digite aqui..."
+            className="conexao-input conexao-input--area"
+          />
+        </div>
+
+        <div className="pt-2">
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            className="w-full sm:w-auto tracking-[0.12em] no-glitch"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? '[TRANSMITINDO...]' : '[DISPARAR FLUXO DE DADOS]'}
+          </Button>
+        </div>
+
+        <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+          // protocolo: emailjs :: canal.seguro
+        </p>
+      </div>
     </form>
   );
 };

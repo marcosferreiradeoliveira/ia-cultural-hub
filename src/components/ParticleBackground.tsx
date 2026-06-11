@@ -52,9 +52,9 @@ export const ParticleBackground = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const colors = ['#3B82F6', '#F97316', '#10B981'];
+      const colors = ['#C8A951', '#39FF14', '#D4AF37'];
       
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 25; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -69,9 +69,9 @@ export const ParticleBackground = () => {
 
     const createLines = () => {
       const lines: Line[] = [];
-      const colors = ['#3B82F6', '#F97316', '#10B981'];
+      const colors = ['#C8A951', '#39FF14', '#D4AF37'];
       
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0; i < 8; i++) {
         lines.push({
           x1: Math.random() * canvas.width,
           y1: Math.random() * canvas.height,
@@ -86,7 +86,7 @@ export const ParticleBackground = () => {
     };
 
     const createMouseParticle = (x: number, y: number) => {
-      const colors = ['#3B82F6', '#F97316', '#10B981'];
+      const colors = ['#C8A951', '#39FF14', '#D4AF37'];
       mouseParticlesRef.current.push({
         x,
         y,
@@ -116,7 +116,7 @@ export const ParticleBackground = () => {
     };
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw parallax lines with scroll effect
@@ -236,8 +236,8 @@ export const ParticleBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, rgba(59, 130, 246, 0.1) 100%)' }}
+      className="fixed inset-0 pointer-events-none z-0 opacity-40"
+      style={{ background: '#000000' }}
     />
   );
 };

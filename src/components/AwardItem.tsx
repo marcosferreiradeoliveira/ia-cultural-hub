@@ -26,7 +26,7 @@ export const AwardItem = ({
     <ScrollReveal delay={delay}>
       <div className="flex gap-6 items-start">
         {featuredImageUrl && featuredSrc && (
-          <div className="hidden md:block flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden">
+          <div className="hidden md:block flex-shrink-0 w-32 h-32 overflow-hidden border border-border glitch-image">
             <img
               src={featuredSrc}
               onError={() => setFeaturedSrc(PLACEHOLDER_IMAGE)}
@@ -39,7 +39,7 @@ export const AwardItem = ({
           </div>
         )}
 
-        <div className="flex-1 flex items-start space-x-4 p-4 glass-morphism rounded-lg interactive-hover group">
+        <div className="flex-1 flex items-start space-x-4 p-4 glass-morphism interactive-hover group border-l-2 border-l-transparent hover:border-l-digital-gold">
           {imageUrl && thumbSrc && (
             <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden">
               <img
@@ -55,16 +55,16 @@ export const AwardItem = ({
           )}
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <h4 className="font-bold text-foreground group-hover:text-gradient-primary transition-all duration-300">
+              <h4 className="font-display text-lg font-bold text-foreground group-hover:text-gold transition-all duration-300 glitch-title" data-text={title || 'Prêmio'}>
                 {title}
               </h4>
               {year && (
-                <span className="text-xs bg-gradient-accent text-accent-foreground px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-mono uppercase tracking-wider border border-digital-gold/50 text-digital-gold px-2 py-0.5">
                   {year}
                 </span>
               )}
             </div>
-            <p className="text-muted-foreground text-sm mt-1">
+            <p className="text-sm font-mono text-muted-foreground mt-1">
               {description}
             </p>
           </div>
